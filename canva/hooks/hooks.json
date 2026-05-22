@@ -1,0 +1,33 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "mcp__claude_ai_Canva__generate-design",
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "You are about to call generate-design, which creates a BRAND NEW Canva design from scratch.\n\nBefore proceeding, verify: is the user asking to CREATE something new, or to REFINE/ADJUST/UPDATE an existing design?\n\n- If CREATING new → proceed with generate-design\n- If REFINING existing → STOP. Use the editing transaction pattern instead:\n  1. get-design-content(design_id)\n  2. start-editing-transaction(design_id)\n  3. perform-editing-operations(transaction_id, operations)\n  4. commit-editing-transaction(transaction_id)\n\nCalling generate-design when the user wants to refine will destroy their existing work and replace it with an unrelated new design. This is the most common Canva mistake.\n\nIf unsure, ask: 'Should I create a new design or edit the existing one?'"
+        }
+      ]
+    },
+    {
+      "matcher": "mcp__claude_ai_Canva__generate-design-structured",
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "You are about to call generate-design-structured, which creates a BRAND NEW Canva design from scratch.\n\nBefore proceeding, verify: is the user asking to CREATE something new, or to REFINE/ADJUST/UPDATE an existing design?\n\n- If CREATING new → proceed with generate-design-structured\n- If REFINING existing → STOP. Use the editing transaction pattern instead:\n  1. get-design-content(design_id)\n  2. start-editing-transaction(design_id)\n  3. perform-editing-operations(transaction_id, operations)\n  4. commit-editing-transaction(transaction_id)\n\nIf unsure, ask: 'Should I create a new design or edit the existing one?'"
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "mcp__claude_ai_Canva__perform-editing-operations",
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "Editing operations were just applied to a Canva design. The transaction is still open — changes are NOT saved yet.\n\nMake sure to call commit-editing-transaction(transaction_id) to save the changes. If something went wrong, call cancel-editing-transaction(transaction_id) to revert. Never leave a transaction open."
+        }
+      ]
+    }
+  ]
+}
