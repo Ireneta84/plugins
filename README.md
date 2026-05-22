@@ -1,25 +1,23 @@
-# Claude Code Plugins
+# Canva Plugin for Claude Code
 
-Personal Claude Code plugins by Irene Deu.
+Skills for working with Canva — brand package creation, client delivery, MCP tool usage, and edit-vs-create discipline.
 
-Each plugin lives in its own subfolder. Install any plugin locally with:
+## Install
 
-```bash
-claude --plugin-dir ~/Projects/plugins/<plugin-name>
+```
+/plugin marketplace add Ireneta84/plugins
 ```
 
-Or clone the repo and point to the subfolder.
+Then install `canva` from the plugin manager.
 
-## Plugins
+## Skills
 
-| Plugin | Description |
-|---|---|
-| [canva](./canva/) | Canva skills for brand package creation, client delivery, and correct MCP usage |
+- **canva-knowledge** — Canva features, tools, plan tiers, sharing limits, export formats
+- **canva-mcp** — How to use the Canva MCP tools correctly (sequences, gotchas, tool selection)
+- **canva-brand-package** — Full workflow: brand kit → templates → client delivery (including plan-aware fallbacks)
+- **canva-edit-refine** — When to edit existing designs vs. create new ones
 
-## Testing
+## Hooks
 
-```bash
-claude --plugin-dir ./canva
-```
-
-Then use `/reload-plugins` to pick up changes during development.
+- **warn-generate-design** — Intercepts generate-design calls when refining existing work
+- **commit-reminder** — Reminds to commit after editing operations
