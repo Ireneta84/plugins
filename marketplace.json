@@ -1,0 +1,18 @@
+{
+  "name": "ireneta84-plugins",
+  "owner": {
+    "name": "Irene Deu"
+  },
+  "plugins": [
+    {
+      "name": "canva",
+      "description": "Canva skills for brand package creation, client delivery, and correct MCP usage. Covers Canva features, sharing limitations, plan constraints, and edit-vs-create discipline.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Ireneta84/plugins.git",
+        "sha": "56053cd17eddb1ef04d118f00ac223fb331fab29"
+      },
+      "homepage": "https://github.com/Ireneta84/plugins"
+    }
+  ]
+}
